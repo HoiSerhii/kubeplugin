@@ -61,29 +61,14 @@ Memory: 42Mi
 Official documentation how to extend kubectl with plugins you can find
 [here](https://kubernetes.io/docs/tasks/extend-kubectl/kubectl-plugins/)
 
-Create a folder for your `kubectl` plugins 
+Copy the script into the PATH and prefix plugin name with `kubectl-`
 ```bash
-mkdir ~/kubectl_plugins
- ```
-
-Edit `.bashrc` in your home directory and add the following line
-```
-export PATH="~/kubectl_plugins:$PATH"
-```
-
-Source your `.bashrc` file or restart the terminal
-```bash
-source ~/.bashrc
-```
-
-Copy the script into the plugins folder and prefix plugin name with `kubectl-`
-```bash
-cp ./scripts/kubeplugin ~/kubectl_plugins/kubectl-info
+cp ./scripts/kubeplugin /usr/local/bin/kubectl-info
 ```
 
 Make all plugins executable
 ```bash
-sudo chmod +x ~/kubectl_plugins/*
+sudo chmod +x /usr/local/bin/kubectl-info
 ```
 
 Ensure that the plugin is in the list
@@ -93,5 +78,5 @@ kubectl plugin list
 
 Run the plugin
 ```bash
-kubectl info pod kube-system
+kubectl info pod argocd
 ```
